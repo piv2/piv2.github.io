@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>航站情缘-机场候机故事与情感资讯分享平台</title>
+    <meta name="description" content="航站情缘，专注于机场航站楼内发生的真实情感故事、候机经历与旅行人际邂逅。这里汇集了旅客在机场中的相遇、离别、等待与重逢的温暖叙事，以及机场出行的人文观察与情感指南。">
+    <meta name="keywords" content="航站情缘,机场故事,候机经历,航站楼,情感故事,旅行邂逅,机场相遇,离别重逢,机场人文">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+            background: #f2f4f8;
+            color: #1f2d3d;
+            line-height: 1.7;
+        }
+        .wrapper {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* 头部 */
+        .site-header {
+            background: linear-gradient(135deg, #0b2545 0%, #1b3a5b 60%, #2b4c6f 100%);
+            color: #fff;
+            padding: 20px 0;
+            border-bottom: 4px solid #e6a756;
+        }
+        .header-inner {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo-icon {
+            font-size: 2.2rem;
+            background: rgba(255,255,255,0.12);
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .site-name {
+            font-size: 1.9rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        .site-name span {
+            color: #e6a756;
+        }
+        .tagline {
+            font-size: 0.9rem;
+            opacity: 0.85;
+            margin-top: 2px;
+        }
+        .header-nav {
+            margin-top: 14px;
+            flex-basis: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 22px;
+            border-top: 1px solid rgba(255,255,255,0.15);
+            padding-top: 12px;
+        }
+        .header-nav a {
+            color: #e8eef5;
+            text-decoration: none;
+            font-size: 0.98rem;
+            padding: 4px 0;
+            border-bottom: 2px solid transparent;
+            transition: 0.2s;
+        }
+        .header-nav a:hover {
+            border-bottom-color: #e6a756;
+            color: #fff;
+        }
+        .header-nav a.active {
+            border-bottom-color: #e6a756;
+            color: #fff;
+            font-weight: 600;
+        }
+        /* 首屏 */
+        .hero {
+            background: #fff;
+            border-radius: 18px;
+            margin: 30px 0 20px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+            overflow: hidden;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .hero-content {
+            flex: 1 1 55%;
+            padding: 42px 40px;
+        }
+        .hero-content h1 {
+            font-size: 2.5rem;
+            line-height: 1.3;
+            margin-bottom: 18px;
+            color: #0b2545;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+        .hero-content h1 em {
+            font-style: normal;
+            color: #b8863a;
+            border-bottom: 3px solid #e6a756;
+        }
+        .hero-desc {
+            font-size: 1.1rem;
+            color: #3e4e5e;
+            margin-bottom: 24px;
+            max-width: 540px;
+        }
+        .hero-stats {
+            display: flex;
+            gap: 32px;
+            margin-top: 26px;
+        }
+        .stat-item {
+            text-align: center;
+        }
+        .stat-num {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #0b2545;
+        }
+        .stat-label {
+            font-size: 0.85rem;
+            color: #6b7b8c;
+        }
+        .hero-visual {
+            flex: 1 1 40%;
+            background: linear-gradient(145deg, #dfe9f3, #c5d5e4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 280px;
+            position: relative;
+        }
+        .visual-symbol {
+            font-size: 6rem;
+            opacity: 0.7;
+        }
+        .visual-caption {
+            position: absolute;
+            bottom: 16px;
+            right: 20px;
+            background: rgba(11,37,69,0.75);
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        /* 通用区块标题 */
+        .section-title {
+            font-size: 1.7rem;
+            font-weight: 700;
+            margin: 40px 0 18px;
+            padding-left: 16px;
+            border-left: 6px solid #b8863a;
+            color: #0b2545;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .section-title .more-link {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: #2b4c6f;
+            text-decoration: none;
+            border: 1px solid #cbd5df;
+            padding: 4px 14px;
+            border-radius: 30px;
+            transition: 0.2s;
+        }
+        .section-title .more-link:hover {
+            background: #0b2545;
+            color: #fff;
+            border-color: #0b2545;
+        }
+        /* 故事卡片 */
+        .story-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 20px;
+        }
+        .story-card {
+            background: #fff;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+            transition: transform 0.25s, box-shadow 0.25s;
+            display: flex;
+            flex-direction: column;
+        }
+        .story-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+        }
+        .story-thumb {
+            height: 140px;
+            background: #e2e9f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.2rem;
+            color: #3a5a78;
+        }
+        .story-body {
+            padding: 18px 18px 14px;
+            flex: 1;
+        }
+        .story-tag {
+            display: inline-block;
+            background: #edf2f7;
+            color: #2c5282;
+            font-size: 0.75rem;
+            padding: 2px 10px;
+            border-radius: 30px;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+        .story-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #1a2a3a;
+        }
+        .story-excerpt {
+            font-size: 0.9rem;
+            color: #4f5f6f;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .story-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 18px;
+            border-top: 1px solid #eef1f5;
+            font-size: 0.8rem;
+            color: #7a8b9c;
+        }
+        .story-meta .read-link {
+            color: #b8863a;
+            font-weight: 500;
+            text-decoration: none;
+        }
+        /* 栏目双栏 */
+        .two-columns {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            margin: 20px 0;
+        }
+        @media (max-width: 900px) {
+            .two-columns {
+                grid-template-columns: 1fr;
+            }
+        }
+        .panel {
+            background: #fff;
+            border-radius: 14px;
+            padding: 22px 24px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.03);
+        }
+        .panel h3 {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            color: #0b2545;
+            border-bottom: 2px solid #eef1f5;
+            padding-bottom: 8px;
+        }
+        .list-item {
+            display: flex;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px dashed #e2e8f0;
+            align-items: baseline;
+        }
+        .list-item:last-child {
+            border-bottom: none;
+        }
+        .list-index {
+            font-weight: 700;
+            color: #b8863a;
+            min-width: 24px;
+        }
+        .list-item a {
+            color: #2d3f53;
+            text-decoration: none;
+            font-weight: 500;
+            flex: 1;
+            transition: 0.2s;
+        }
+        .list-item a:hover {
+            color: #b8863a;
+        }
+        .list-date {
+            color: #8494a6;
+            font-size: 0.8rem;
+        }
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 14px;
+        }
+        .tag-cloud a {
+            background: #edf2f7;
+            color: #2d3f53;
+            padding: 6px 14px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: 0.2s;
+        }
+        .tag-cloud a:hover {
+            background: #0b2545;
+            color: #fff;
+        }
+        /* 专题区 */
+        .feature-section {
+            background: #fff;
+            border-radius: 18px;
+            padding: 28px 24px;
+            margin: 30px 0;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 16px;
+        }
+        .feature-item {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 18px;
+            border-left: 4px solid #b8863a;
+        }
+        .feature-item h4 {
+            margin-bottom: 8px;
+            font-size: 1.05rem;
+            color: #0b2545;
+        }
+        .feature-item p {
+            font-size: 0.9rem;
+            color: #4b5a6a;
+        }
+        /* FAQ */
+        .faq-block {
+            background: #fff;
+            border-radius: 16px;
+            padding: 24px;
+            margin: 20px 0;
+        }
+        .faq-item {
+            border-bottom: 1px solid #e8edf3;
+            padding: 14px 0;
+        }
+        .faq-item:last-child {
+            border: none;
+        }
+        .faq-q {
+            font-weight: 600;
+            color: #1f2d3d;
+            display: flex;
+            gap: 10px;
+            cursor: default;
+        }
+        .faq-q::before {
+            content: "Q";
+            background: #0b2545;
+            color: #fff;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .faq-a {
+            margin-top: 8px;
+            padding-left: 32px;
+            color: #4f5f6f;
+            font-size: 0.95rem;
+        }
+        .faq-a::before {
+            content: "A";
+            background: #b8863a;
+            color: #fff;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            margin-right: 8px;
+            margin-top: 2px;
+            vertical-align: middle;
+        }
+        /* 页脚 */
+        .site-footer {
+            background: #0b2545;
+            color: #b8c7d9;
+            margin-top: 40px;
+            padding: 32px 0 20px;
+        }
+        .footer-inner {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .footer-col h4 {
+            color: #fff;
+            font-size: 1rem;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+        .footer-col a {
+            display: block;
+            color: #b8c7d9;
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 6px;
+        }
+        .footer-col a:hover {
+            color: #e6a756;
+        }
+        .copyright {
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 26px;
+            padding-top: 16px;
+            font-size: 0.8rem;
+            color: #8a9db0;
+        }
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .hero-content {
+                padding: 30px 22px;
+            }
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            .hero-visual {
+                min-height: 180px;
+            }
+            .header-nav {
+                gap: 6px 16px;
+            }
+            .site-name {
+                font-size: 1.5rem;
+            }
+            .section-title {
+                font-size: 1.4rem;
+            }
+            .footer-inner {
+                flex-direction: column;
+            }
+        }
+        @media (max-width: 480px) {
+            .hero-stats {
+                flex-wrap: wrap;
+                gap: 16px;
+            }
+            .stat-item {
+                flex: 1 1 30%;
+            }
+            .stat-num {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="wrapper header-inner">
+            <div class="logo-area">
+                <div class="logo-icon">✈️</div>
+                <div>
+                    <div class="site-name">航站<span>情缘</span></div>
+                    <div class="tagline">在机场遇见温暖与故事</div>
+                </div>
+            </div>
+            <nav class="header-nav">
+                <a href="#" class="active">首页</a>
+                <a href="#">候机故事</a>
+                <a href="#">相遇时刻</a>
+                <a href="#">离别与重逢</a>
+                <a href="#">机场人文</a>
+                <a href="#">旅行随笔</a>
+                <a href="#">关于我们</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="wrapper">
+        <!-- 首屏 Hero -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>每一段<em>航站情缘</em><br>都值得被记录</h1>
+                <p class="hero-desc">机场不只是出发与抵达的节点，更是无数人擦肩、驻足、等待与重逢的舞台。在这里，分享那些发生在航站楼内的真实情感片段，看陌生人如何短暂交汇，又各自远行。</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-num">500+</div>
+                        <div class="stat-label">真实故事</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-num">80+</div>
+                        <div class="stat-label">机场记录</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-num">1200+</div>
+                        <div class="stat-label">候机感悟</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <span class="visual-symbol">🛫</span>
+                <span class="visual-caption">航站楼里的匆匆与凝望</span>
+            </div>
+        </section>
+
+        <!-- 热门故事卡片 -->
+        <div class="section-title">
+            <span>热门航站故事</span>
+            <a href="#" class="more-link">查看全部 →</a>
+        </div>
+        <section class="story-grid">
+            <article class="story-card">
+                <div class="story-thumb">🛄</div>
+                <div class="story-body">
+                    <span class="story-tag">候机偶遇</span>
+                    <h2 class="story-title">延误四小时，却遇见了同乡的她</h2>
+                    <p class="story-excerpt">雷雨天气让航班一再推迟。百无聊赖之际，邻座翻看的书让我忍不住搭话——那是我故乡小城才有的旧版地图册。</p>
+                </div>
+                <div class="story-meta">
+                    <span>2025.03.12 · 阅读 3.2k</span>
+                    <a href="#" class="read-link">阅读全文</a>
+                </div>
+            </article>
+            <article class="story-card">
+                <div class="story-thumb">🧳</div>
+                <div class="story-body">
+                    <span class="story-tag">离别时刻</span>
+                    <h2 class="story-title">安检口前的拥抱，比登机牌更沉重</h2>
+                    <p class="story-excerpt">送别总是发生在安检线之外。那个迟迟不肯转身的背影，让整个航站楼都变得安静。</p>
+                </div>
+                <div class="story-meta">
+                    <span>2025.03.10 · 阅读 2.8k</span>
+                    <a href="#" class="read-link">阅读全文</a>
+                </div>
+            </article>
+            <article class="story-card">
+                <div class="story-thumb">☕</div>
+                <div class="story-body">
+                    <span class="story-tag">深夜机场</span>
+                    <h2 class="story-title">凌晨两点的航站楼，一杯热咖啡的温度</h2>
+                    <p class="story-excerpt">红眼航班前的候机厅，我与一位常飞的老先生聊起他三十年的飞行生涯。有些故事，只会在深夜的机场被说出。</p>
+                </div>
+                <div class="story-meta">
+                    <span>2025.03.08 · 阅读 1.9k</span>
+                    <a href="#" class="read-link">阅读全文</a>
+                </div>
+            </article>
+            <article class="story-card">
+                <div class="story-thumb">🛬</div>
+                <div class="story-body">
+                    <span class="story-tag">重逢惊喜</span>
+                    <h2 class="story-title">接机口举着褪色名牌的父亲</h2>
+                    <p class="story-excerpt">留学三年第一次回家，远远就看见父亲站在接机人群最前面，手里还举着我高中时用的旧名牌。</p>
+                </div>
+                <div class="story-meta">
+                    <span>2025.03.05 · 阅读 4.1k</span>
+                    <a href="#" class="read-link">阅读全文</a>
+                </div>
+            </article>
+        </section>
+
+        <!-- 双栏内容 -->
+        <div class="two-columns">
+            <section class="panel">
+                <h3>📌 最新航站见闻</h3>
+                <div class="list-item">
+                    <span class="list-index">1</span>
+                    <a href="#">大兴机场的日落，被许多旅客拍成明信片</a>
+                    <span class="list-date">今天</span>
+                </div>
+                <div class="list-item">
+                    <span class="list-index">2</span>
+                    <a href="#">一位地勤人员的十年：见过太多眼泪与笑容</a>
+                    <span class="list-date">昨天</span>
+                </div>
+                <div class="list-item">
+                    <span class="list-index">3</span>
+                    <a href="#">航站楼里的钢琴声，让赶路的人慢下脚步</a>
+                    <span class="list-date">03.11</span>
+                </div>
+                <div class="list-item">
+                    <span class="list-index">4</span>
+                    <a href="#">中转停留七小时，他逛遍了整个机场</a>
+                    <span class="list-date">03.10</span>
+                </div>
+                <div class="list-item">
+                    <span class="list-index">5</span>
+                    <a href="#">机场失物招领处，藏着许多遗憾与牵挂</a>
+                    <span class="list-date">03.08</span>
+                </div>
+                <div class="list-item">
+                    <span class="list-index">6</span>
+                    <a href="#">那些在登机口求婚的人，后来怎么样了</a>
+                    <span class="list-date">03.06</span>
+                </div>
+            </section>
+            <aside class="panel">
+                <h3>🏷️ 热门话题</h3>
+                <div class="tag-cloud">
+                    <a href="#">#机场邂逅</a>
+                    <a href="#">#异地恋</a>
+                    <a href="#">#毕业送别</a>
+                    <a href="#">#候机读书</a>
+                    <a href="#">#中转奇遇</a>
+                    <a href="#">#接机心情</a>
+                    <a href="#">#机场美食</a>
+                    <a href="#">#深夜航班</a>
+                    <a href="#">#行李故事</a>
+                    <a href="#">#航站楼散步</a>
+                </div>
+                <h3 style="margin-top: 24px;">📊 读者共鸣</h3>
+                <div style="font-size: 0.9rem; color: #4f5f6f; line-height: 2;">
+                    <p>“原来不止我一个人在机场哭过。” —— 读者留言</p>
+                    <p>“每次降落，看到接机的人就觉得心安。” —— 常旅客</p>
+                    <p>“机场比婚礼殿堂见证了更多真挚的吻。” —— 某航站楼手记</p>
+                </div>
+            </aside>
+        </div>
+
+        <!-- 专题推荐 -->
+        <section class="feature-section">
+            <h2 class="section-title" style="margin-top: 0;">✈️ 航站情缘特别专题</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h4>第一次独自远行</h4>
+                    <p>18岁第一次在机场和父母挥手，从此故乡只有冬夏。那些青涩的出发，是我们共同的记忆坐标。</p>
+                </div>
+                <div class="feature-item">
+                    <h4>异地恋的飞行里程</h4>
+                    <p>攒下的每一张登机牌都是思念的刻度。双城之间，机场成为最熟悉的约会地点。</p>
+                </div>
+                <div class="feature-item">
+                    <h4>机场里的工作者</h4>
+                    <p>从问询台到跑道边，那些日夜守护航站楼运转的人，也有属于自己的情缘故事。</p>
+                </div>
+                <div class="feature-item">
+                    <h4>中转站的短暂人生</h4>
+                    <p>几小时的中转，像一场浓缩的旅途。有人在免税店徘徊，有人在休息室写下一封信。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 常见问题 FAQ -->
+        <section class="faq-block">
+            <h2 class="section-title" style="margin-top: 0;">关于航站情缘的常见问题</h2>
+            <div class="faq-item">
+                <div class="faq-q">航站情缘主要分享什么类型的内容？</div>
+                <div class="faq-a">我们聚焦于机场航站楼内外的真实情感故事、人际相遇、离别与重逢的瞬间，也包括机场人文观察、候机体验和旅行感悟。我们不虚构新闻或数据，所有故事均来自旅客投稿与编辑约稿，注重真实与温度。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">我可以投稿自己的机场故事吗？</div>
+                <div class="faq-a">当然可以。欢迎通过网站底部的“投稿与合作”邮箱发送你的故事。建议提供发生的时间、机场名称以及基本经过，字数不限。我们会对来稿进行编辑，并在征得同意后发布。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">如何理解“航站情缘”中的“情缘”？</div>
+                <div class="faq-a">这里的情缘不仅限于爱情，也包括亲情、友情、陌生人之间的善意，甚至人与某个机场、某座城市之间的特殊情感联结。航站楼是流动的驿站，但情感是恒久的坐标。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">网站会更新机场实用信息吗？</div>
+                <div class="faq-a">主要分享情感与人文内容，但也会在部分文章中附带候机建议、中转指南等实用信息，帮助读者更好地规划机场时光。请以官方实时信息为准。</div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="wrapper footer-inner">
+            <div class="footer-col">
+                <h4>航站情缘</h4>
+                <p style="font-size: 0.9rem; max-width: 260px;">记录机场里流动的温暖，让每一个候机的片刻都不孤单。</p>
+            </div>
+            <div class="footer-col">
+                <h4>内容栏目</h4>
+                <a href="#">候机故事</a>
+                <a href="#">相遇与离别</a>
+                <a href="#">机场人文</a>
+                <a href="#">旅行随笔</a>
+                <a href="#">读者来稿</a>
+            </div>
+            <div class="footer-col">
+                <h4>交流互动</h4>
+                <a href="#">投稿入口</a>
+                <a href="#">故事线索征集</a>
+                <a href="#">读者社群</a>
+                <a href="#">版权声明</a>
+            </div>
+            <div class="footer-col">
+                <h4>其他</h4>
+                <a href="#">关于我们</a>
+                <a href="#">联系邮箱</a>
+                <a href="#">隐私说明</a>
+            </div>
+        </div>
+        <div class="wrapper copyright">
+            <p>© 2025 航站情缘 · 在机场，与故事相遇。本站内容基于真实投稿，部分人物已匿名处理。</p>
+        </div>
+    </footer>
+</body>
+  </html>
